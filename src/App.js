@@ -10,10 +10,10 @@ import Home from "./components/Home"
 
 function App() {
   return (
-    <div className="App container flow">
+    <div className="App container flow flex">
       {/* nav  */}
-      <nav className="flex container bg-dark">
-        <img src={logo} />
+      <nav className="flex bg-dark">
+        <img className="logo" alt="logo" src={logo} />
         <div className="pages flex">
           <IconNavHome />
           <IconNavMovies />
@@ -23,14 +23,16 @@ function App() {
         <img className="avatar" src={avatar} />
       </nav>
 
-      {/* search */}
-      <form className="search container flex">
-        <button className="search-btn" type="submit"><img src={iconSearch} /></button>
-        <label className="label" htmlFor="query"><span className="sr-only">Search bar</span></label>
-        <input className="search-bar fw-light" type="text" name="query" placeholder="Search for movies or TV series" />
-      </form>
+      <main>
+        {/* search */}
+        <form className="search flex">
+          <button className="search-btn" type="submit"><img src={iconSearch} /></button>
+          <label className="label" htmlFor="query"><span className="sr-only">Search bar</span></label>
+          <input className="search-bar fw-light" type="text" name="query" placeholder="Search for movies or TV series" />
+        </form>
 
-      <Home />
+        <Home />
+      </main>
     </div>
   );
 }
