@@ -285,17 +285,18 @@ main {
   font-size: 1rem;
   color: hsl( var(--clr-white) / .5);
   outline: none;
+  webkit-appearance: none;
   border:none;
   width: 100%;
 }
 
 
 .search-bar:focus {
-  outline:none;
   color: hsl( var(--clr-white) );
   caret-color: hsl(var(--clr-red));
   border-bottom: 1px solid hsl(var(--clr-blue));
 }
+
 
 /* trending */
 
