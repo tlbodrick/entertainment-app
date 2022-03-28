@@ -1,3 +1,6 @@
+import { Link, Route, Routes, Navigate } from "react-router-dom"
+import Movies from "./components/Movies"
+import Tv from "./components/Tv"
 import logo from "./icons/logo.svg"
 import { ReactComponent as IconNavHome } from './icons/icon-nav-home.svg'
 import { ReactComponent as IconNavMovies } from './icons/icon-nav-movies.svg'
@@ -15,10 +18,18 @@ function App() {
       <nav className="flex bg-dark">
         <img className="logo" alt="logo" src={logo} />
         <div className="pages flex">
-          <IconNavHome />
-          <IconNavMovies />
-          <IconNavTv />
-          <IconNavBookmark />
+          <Link to="/">
+            <IconNavHome />
+          </Link>
+          <Link to="/movies">
+            <IconNavMovies />
+          </Link>
+          <Link to="/tv">
+            <IconNavTv />
+          </Link>
+          <Link to="/bookmarks">
+            <IconNavBookmark />
+          </Link>
         </div>
         <img className="avatar" src={avatar} />
       </nav>
@@ -31,18 +42,17 @@ function App() {
           <input className="search-bar fw-light" type="text" name="query" placeholder="Search for movies or TV series" />
         </form>
 
-        <Home />
-      </main>
-    </div>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/tv" element={<Tv />} />
+          <Route path="/bookmarks" element={<Movies />} />
+        </Routes>
+
+      </main >
+    </div >
   );
 }
 
 export default App;
 
-{/* <div className="item">
-  <button className="bookmark-icon flex" aria-selected="false"><IconBookmarkEmpty /></button>
-  <div className="thumbnail">
-    <img src={thumbnail} />
-    <div className="playPanel flex fs-600 fw-500"><img src={iconPlay} /> Play</div>
-  </div>
-</div> */}

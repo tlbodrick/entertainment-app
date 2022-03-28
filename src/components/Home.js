@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import data from "../data.json"
 import MediaItem from "./MediaItem"
 
@@ -24,7 +23,7 @@ function Home() {
 
             <section className="recommended-section">
                 <h2 className="fw-light fs-600">Recommended</h2>
-                <div className="recommended-media grid">{renderMedia}</div>
+                <div className="media-list grid">{renderMedia}</div>
             </section>
         </div>
     )
