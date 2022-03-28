@@ -167,7 +167,7 @@ UTILITY CLASSES
   background-color: hsl(var(--clr-darker) / .5); 
   stroke: hsl(var(--clr-white));
   fill: none;
-  place-items: center;
+  justify-content: center;
 }
 
 .bookmark-icon:hover, .bookmark-icon:focus {

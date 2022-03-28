@@ -8,8 +8,6 @@ function Home() {
         return <MediaItem thumbnail={media.thumbnail.trending.large} mediaInfo={media} thisClass="trending" />
     })
 
-    console.log(data)
-
     const renderMedia = data.map(media => {
         return <MediaItem thumbnail={media.thumbnail.regular.large} mediaInfo={media} thisClass="recommended" />
     })

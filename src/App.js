@@ -1,17 +1,32 @@
-import { Link, Route, Routes, Navigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Link, Route, Routes, useNavigate } from "react-router-dom"
+import SearchResults from "./components/SearchResults"
 import Movies from "./components/Movies"
 import Tv from "./components/Tv"
 import logo from "./icons/logo.svg"
+import iconSearch from "./icons/icon-search.svg"
 import { ReactComponent as IconNavHome } from './icons/icon-nav-home.svg'
 import { ReactComponent as IconNavMovies } from './icons/icon-nav-movies.svg'
 import { ReactComponent as IconNavTv } from './icons/icon-nav-tv-series.svg'
 import { ReactComponent as IconNavBookmark } from './icons/icon-nav-bookmark.svg'
 import avatar from "./icons/image-avatar.png"
-import iconSearch from "./icons/icon-search.svg"
-
 import Home from "./components/Home"
 
 function App() {
+  const [query, setQuery] = useState('')
+  let navigate = useNavigate()
+
+  function handleChange(e) {
+    setQuery(e.target.value)
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    navigate('/results')
+  }
+
+
+
   return (
     <div className="App container flow flex">
       {/* nav  */}
@@ -35,11 +50,20 @@ function App() {
       </nav>
 
       <main>
-        {/* search */}
-        <form className="search flex">
+        {/* search bar */}
+
+
+        <form className="search flex" onSubmit={(e) => handleSubmit(e)}>
           <button className="search-btn" type="submit"><img src={iconSearch} /></button>
           <label className="label" htmlFor="query"><span className="sr-only">Search bar</span></label>
-          <input className="search-bar fw-light" type="text" name="query" placeholder="Search for movies or TV series" />
+          <input
+            value={query}
+            className="search-bar fw-light"
+            type="text"
+            name="query"
+            placeholder="Search for movies or TV series"
+            onChange={handleChange}
+          />
         </form>
 
         <Routes>
@@ -47,6 +71,7 @@ function App() {
           <Route path="/movies" element={<Movies />} />
           <Route path="/tv" element={<Tv />} />
           <Route path="/bookmarks" element={<Movies />} />
+          <Route path="/results" element={<SearchResults query={query} />} />
         </Routes>
 
       </main >
