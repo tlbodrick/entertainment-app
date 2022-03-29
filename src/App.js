@@ -3,6 +3,7 @@ import { Link, Route, Routes, useNavigate } from "react-router-dom"
 import SearchResults from "./components/SearchResults"
 import Movies from "./components/Movies"
 import Tv from "./components/Tv"
+import Bookmarks from "./components/Bookmarks"
 import logo from "./icons/logo.svg"
 import iconSearch from "./icons/icon-search.svg"
 import { ReactComponent as IconNavHome } from './icons/icon-nav-home.svg'
@@ -16,14 +17,20 @@ function App() {
   const [query, setQuery] = useState('')
   let navigate = useNavigate()
 
+  // when type in input
   function handleChange(e) {
     setQuery(e.target.value)
   }
 
+  // search form submit
   function handleSubmit(e) {
     e.preventDefault();
     navigate('/results')
   }
+
+
+
+
 
 
 
@@ -70,7 +77,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/tv" element={<Tv />} />
-          <Route path="/bookmarks" element={<Movies />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/results" element={<SearchResults query={query} />} />
         </Routes>
 

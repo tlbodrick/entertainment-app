@@ -170,15 +170,9 @@ UTILITY CLASSES
   justify-content: center;
 }
 
-.bookmark-icon:hover, .bookmark-icon:focus {
+.bookmark-icon:hover {
   background-color: hsl( var(--clr-white) );
   stroke: hsl(var(--clr-darker));
-}
-
-.bookmark-icon[aria-selected="true"] {
-  background-color: hsl(var(--clr-darker) / .5);
-  fill: hsl(var(--clr-white));
-  stroke: hsl( var(--clr-white) );
 }
 
 .thumbnail {
