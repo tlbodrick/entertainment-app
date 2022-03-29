@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react"
+import { useContext } from "react"
 import { Context } from "../BookmarkContext"
 import { ReactComponent as IconBookmarkFull } from '../icons/icon-bookmark-full.svg'
 import { ReactComponent as IconBookmarkEmpty } from '../icons/icon-bookmark-empty.svg'
@@ -8,33 +8,22 @@ import iconCategoryTV from "../icons/icon-category-tv.svg"
 
 function MediaItem({ thumbnail, mediaInfo, addBookmark, thisClass }) {
 
-    const { addToBookmarks } = useContext(Context)
+    const { bookmark, bookmarkItems } = useContext(Context)
 
-    const [info, setInfo] = useState(mediaInfo)
+    const info = mediaInfo
 
-    function updateBookmark() {
-        setInfo(prevInfo => { return { ...prevInfo, isBookmarked: !prevInfo.isBookmarked } })
-        console.log("updated")
-    }
-
-    useEffect(() => {
-        localStorage.setItem("info", JSON.stringify(info))
-    }, [info])
 
     function bookmarkIcon() {
-        if (info.isBookmarked === true) {
+        if (bookmarkItems.some(item => info.id === item.id)) {
             return <IconBookmarkFull />
-        } else if (info.isBookmarked === false) {
+        } else {
             return <IconBookmarkEmpty />
         }
     }
 
-
-
-
     return (
         <div className="item">
-            <div className="bookmark-icon flex" onClick={() => addToBookmarks(info, updateBookmark)}>{bookmarkIcon()}</div>
+            <div className="bookmark-icon flex" onClick={() => bookmark(info)}>{bookmarkIcon()}</div>
             <div className="thumbnail">
                 <img src={thumbnail} alt="thumbnail" />
                 <div className="playPanel flex fs-600 fw-500"><img src={iconPlay} alt="play-icon" /><p className="sr-only">Play</p></div>

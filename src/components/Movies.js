@@ -1,8 +1,7 @@
-import data from "../data.json"
 import MediaItem from "./MediaItem"
 
-function Movies() {
-    const movies = data.filter(media => media.category === "Movie")
+function Movies({ itemData }) {
+    const movies = itemData.filter(media => media.category === "Movie")
 
     const renderMovies = movies.map(movie => {
         return <MediaItem thumbnail={movie.thumbnail.regular.large} mediaInfo={movie} thisClass="movie" />

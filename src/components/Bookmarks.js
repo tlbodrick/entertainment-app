@@ -1,5 +1,4 @@
 import { useContext } from "react"
-import data from "../data.json"
 import MediaItem from "./MediaItem"
 import { Context } from "../BookmarkContext"
 

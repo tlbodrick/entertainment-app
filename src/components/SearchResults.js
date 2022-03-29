@@ -1,11 +1,10 @@
 import { useNavigate } from "react-router"
-import data from "../data.json"
 import MediaItem from "./MediaItem"
 
-function SearchResults({ query }) {
+function SearchResults({ query, itemData }) {
     const navigate = useNavigate()
 
-    const matchingMedia = data.filter(media => {
+    const matchingMedia = itemData.filter(media => {
         const titleLowercase = media.title.toLowerCase()
         const queryLowercase = query.toLowerCase()
         return titleLowercase.includes(queryLowercase)

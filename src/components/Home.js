@@ -1,14 +1,13 @@
-import data from "../data.json"
 import MediaItem from "./MediaItem"
 
-function Home() {
+function Home({ itemData }) {
 
-    const trendingMedia = data.filter(media => media.isTrending === true)
+    const trendingMedia = itemData.filter(media => media.isTrending === true)
     const renderTrending = trendingMedia.map(media => {
         return <MediaItem thumbnail={media.thumbnail.trending.large} mediaInfo={media} thisClass="trending" />
     })
 
-    const renderMedia = data.map(media => {
+    const renderMedia = itemData.map(media => {
         return <MediaItem thumbnail={media.thumbnail.regular.large} mediaInfo={media} thisClass="recommended" />
     })
 

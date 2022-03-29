@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import data from "./data.json"
+import { useState } from "react"
 import { Link, Route, Routes, useNavigate } from "react-router-dom"
 import SearchResults from "./components/SearchResults"
 import Movies from "./components/Movies"
@@ -14,6 +15,9 @@ import avatar from "./icons/image-avatar.png"
 import Home from "./components/Home"
 
 function App() {
+
+  const itemData = data;
+
   const [query, setQuery] = useState('')
   let navigate = useNavigate()
 
@@ -53,7 +57,7 @@ function App() {
             <IconNavBookmark />
           </Link>
         </div>
-        <img className="avatar" src={avatar} />
+        <img className="avatar" alt="avatar" src={avatar} />
       </nav>
 
       <main>
@@ -61,7 +65,7 @@ function App() {
 
 
         <form className="search flex" onSubmit={(e) => handleSubmit(e)}>
-          <button className="search-btn" type="submit"><img src={iconSearch} /></button>
+          <button className="search-btn" type="submit"><img src={iconSearch} alt="search-icon" /></button>
           <label className="label" htmlFor="query"><span className="sr-only">Search bar</span></label>
           <input
             value={query}
@@ -74,11 +78,11 @@ function App() {
         </form>
 
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/tv" element={<Tv />} />
+          <Route exact path="/" element={<Home itemData={itemData} />} />
+          <Route path="/movies" element={<Movies itemData={itemData} />} />
+          <Route path="/tv" element={<Tv itemData={itemData} />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
-          <Route path="/results" element={<SearchResults query={query} />} />
+          <Route path="/results" element={<SearchResults itemData={itemData} query={query} />} />
         </Routes>
 
       </main >
