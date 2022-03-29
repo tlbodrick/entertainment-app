@@ -36,16 +36,16 @@ function MediaItem({ thumbnail, mediaInfo, addBookmark, thisClass }) {
         <div className="item">
             <div className="bookmark-icon flex" onClick={() => addToBookmarks(info, updateBookmark)}>{bookmarkIcon()}</div>
             <div className="thumbnail">
-                <img src={thumbnail} />
-                <div className="playPanel flex fs-600 fw-500"><img src={iconPlay} /><p className="sr-only">Play</p></div>
+                <img src={thumbnail} alt="thumbnail" />
+                <div className="playPanel flex fs-600 fw-500"><img src={iconPlay} alt="play-icon" /><p className="sr-only">Play</p></div>
             </div>
             <div className={thisClass}>
                 <div className="media-info fw-light fs-300 flex">
                     <p>{info.year}</p>
                     <span>•</span>
                     {mediaInfo.category === 'Movie' ?
-                        <p><img className="category-img" src={iconCategoryMovie} /> Movie</p> :
-                        <p><img className="category-img" src={iconCategoryTV} />TV Series</p>
+                        <p><img className="category-img" src={iconCategoryMovie} alt="movie-icon" /> Movie</p> :
+                        <p><img className="category-img" src={iconCategoryTV} alt="tv-series-icon" />TV Series</p>
                     }
                     <span>•</span>
                     <p>{info.rating}</p>
